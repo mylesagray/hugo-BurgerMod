@@ -372,28 +372,6 @@ h6:hover .anchor {
     font-weight: 500;
 }
 
-.post-content :not(table) ::-webkit-scrollbar-thumb {
-    border: 2px solid var(--hljs-bg);
-    background: rgba(255, 255, 255, 0.32);
-}
-
-.post-content :not(table) ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.56);
-}
-
-.gist table::-webkit-scrollbar-thumb {
-    border: 2px solid rgb(255, 255, 255);
-    background: rgba(0, 0, 0, 0.32);
-}
-
-.gist table::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.56);
-}
-
-.post-content table::-webkit-scrollbar-thumb {
-    border-width: 2px;
-}
-
 .paginav {
     margin: 10px 0;
     display: flex;

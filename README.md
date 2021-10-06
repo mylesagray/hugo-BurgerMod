@@ -16,14 +16,14 @@ The [demo](https://adityatelange.github.io/hugo-PaperMod/) includes a lot of doc
 [![hugo-papermod](https://img.shields.io/badge/Hugo--Themes-@PaperMod-blue)](https://themes.gohugo.io/themes/hugo-papermod/)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=adityatelange_hugo-PaperMod&metric=alert_status)](https://sonarcloud.io/dashboard?id=adityatelange_hugo-PaperMod)
 ![code-size](https://img.shields.io/github/languages/code-size/adityatelange/hugo-PaperMod)
-
 ---
+
 
 <p align="center">
   <kbd><img src="https://user-images.githubusercontent.com/21258296/114303440-bfc0ae80-9aeb-11eb-8cfa-48a4bb385a6d.png" alt="Mockup image" title="Mockup"/></kbd>
 </p>
-
 ---
+
 
 ## Features/Mods 💥
 
@@ -50,36 +50,36 @@ The [demo](https://adityatelange.github.io/hugo-PaperMod/) includes a lot of doc
 -   No webpack, nodejs and other dependencies are required to edit the theme.
 
 Read Wiki For More Details => **[PaperMod - Features](https://github.com/adityatelange/hugo-PaperMod/wiki/Features)**
-
 ---
+
 
 ## Install/Update 📥
 
 Read Wiki For More Details => **[PaperMod - Installation](https://github.com/adityatelange/hugo-PaperMod/wiki/Installation)**
-
 ---
+
 
 ## Social-Icons/Share-Icons 🖼️
 
 Read Wiki For More Details => **[PaperMod-Icons](https://github.com/adityatelange/hugo-PaperMod/wiki/Icons)**
-
 ---
+
 
 ## FAQs / How To's Guide 🙋
 
 Read Wiki For More Details => **[PaperMod-FAQs](https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs)**
-
 ---
+
 
 ## Release Changelog
 
 Release ChangeLog has info about stuff added: **[Releases](https://github.com/adityatelange/hugo-PaperMod/releases)**
-
 ---
+
 
 ## [LightHouse Report (100% ?)](https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Fadityatelange.github.io%2Fhugo-PaperMod%2F)
-
 ---
+
 
 ## Special Thanks 🌟
 

@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-image">
+        <figure class="image is-3by2">
+            <a href="{{ .RelPermalink }}">
+                {{ if isset .Params "cover" }}
+                    {{ $image := (.Page.Resources.ByType "image").GetMatch (printf "**%s**" (.Params.cover.image)) -}}
+                    {{ if gt $image.Width 240 }}
+                        {{ $image = $image.Resize "240x" }}
+                    {{ end }}
+                    <picture>
+                        {{ $isJPG := eq (path.Ext .Params.cover.image) ".jpg" }}
+                        {{ $isPNG := eq (path.Ext .Params.cover.image) ".png" }}
+                    
+                        {{ if ($isJPG) -}}
+                        {{ $avifPath:= replace .Params.cover.image ".jpg" ".avif" }}
+                        {{ $avifPathStatic:= (add (add "/content/" .Page.Dir) $avifPath) }}
+                    
+                        {{ if (fileExists $avifPathStatic) -}}
+                        <source srcset="{{ .RelPermalink }}{{$avifPath | safeURL }}" type="image/avif">
+                        {{- end }}
+                    
+                        {{ $webpPath:= replace .Params.cover.image ".jpg" ".webp" }}
+                        {{ $webpPathStatic:= (add (add "/content/" .Page.Dir) $webpPath )}}
+                    
+                        {{ if (fileExists $webpPathStatic) -}}
+                        <source srcset="{{ .RelPermalink }}{{$webpPath | safeURL }}" type="image/webp">
+                        {{- end }}
+                        {{- end }}
+                    
+                        {{ if ($isPNG) -}}
+                        {{ $avifPath:= replace .Params.cover.image ".png" ".avif" }}
+                        {{ $avifPathStatic:= (add (add "/content/" .Page.Dir) $avifPath )}}
+                    
+                        {{ if (fileExists $avifPathStatic) -}}
+                        <source srcset="{{ .RelPermalink }}{{$avifPath | safeURL }}" type="image/avif">
+                        {{- end }}
+                    
+                        {{ $webpPath:= replace .Params.cover.image ".png" ".webp" }}
+                        {{ $webpPathStatic:= (add (add "/content/" .Page.Dir) $webpPath )}}
+                    
+                        {{ if (fileExists $webpPathStatic) -}}
+                        <source srcset="{{ .RelPermalink }}{{$webpPath | safeURL }}" type="image/webp">
+                        {{- end }}
+                        {{- end }}
+                    
+                        <img src="{{ $image.RelPermalink | safeURL }}" alt="{{ .Params.cover.alt }}" loading="lazy" decoding="async">
+                    </picture>
+                {{ else }}
+                <img src="{{ .RelPermalink }}{{ .Params.cover.image }}" alt="{{ .Params.cover.alt }}" loading="lazy" decoding="async">
+                {{ end}}
+            </a>
+        </figure>
+    </div>
+    <div class="card-content">
+        <a class="title is-5" href="{{ .Permalink }}">{{ .Title }}</a>
+    </div>
+</div>

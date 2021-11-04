@@ -1,0 +1,25 @@
+.is-one-third {
+    width: 33.3333%;
+    display: block;
+    float: left;
+    padding: 0.5em 0.5em 0 0;
+}
+
+.is-one-third img {
+    object-fit: cover;
+    height: 6em;
+    width: 100%;
+}
+
+.card .card-content {
+    font-size: 17px;
+    padding: .5em 0;
+}
+
+.related-links-columns {
+    overflow: overlay;
+}
+
+.post-footer {
+    margin-top: 0;
+}

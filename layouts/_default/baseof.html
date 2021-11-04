@@ -14,10 +14,12 @@
 {{- end -}}
 " id="top">
     {{- partialCached "header.html" . .Page -}}
-    <main class="main">
-        {{- block "main" . }}{{ end }}
-    </main>
-    {{ partialCached "footer.html" . .Layout .Kind (.Param "hideFooter") (.Param "ShowCodeCopyButtons") -}}
+    <div class="container">
+        <main class="main">
+            {{- block "main" . }}{{ end }}
+        </main>
+    </div>
+    {{ partialCached "footer.html" . .Layout .Kind -}}
 </body>
 
 </html>

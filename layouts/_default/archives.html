@@ -7,6 +7,11 @@
     {{ .Description }}
   </div>
   {{- end }}
+  {{- if .Content }}
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+  {{- end }}
 </header>
 
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}

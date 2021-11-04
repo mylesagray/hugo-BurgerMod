@@ -1,6 +1,5 @@
-.page-header,
-.post-header {
-    margin: 24px auto var(--content-gap) auto;
+.page-header, .post-header {
+    margin: 0 auto var(--content-gap);
 }
 
 .post-title {
@@ -13,8 +12,7 @@
     margin-bottom: 5px;
 }
 
-.post-meta,
-.breadcrumbs {
+.post-meta, .breadcrumbs {
     color: var(--secondary);
     font-size: 14px;
     display: flex;
@@ -36,10 +34,7 @@
     color: var(--content);
 }
 
-.post-content h3,
-.post-content h4,
-.post-content h5,
-.post-content h6 {
+.post-content h3, .post-content h4, .post-content h5, .post-content h6 {
     margin: 24px 0 16px;
 }
 
@@ -69,8 +64,7 @@
     font-size: 12px;
 }
 
-.post-content a,
-.toc a:hover {
+.post-content a, .toc a:hover {
     box-shadow: 0 1px 0;
 }
 
@@ -85,16 +79,11 @@
     background: linear-gradient(to right, var(--primary) 100%, transparent 0) 0 50%/1px 1px repeat-x;
 }
 
-.post-content dl,
-.post-content ol,
-.post-content p,
-.post-content figure,
-.post-content ul {
+.post-content dl, .post-content ol, .post-content p, .post-content figure, .post-content ul {
     margin-bottom: var(--content-gap);
 }
 
-.post-content ol,
-.post-content ul {
+.post-content ol, .post-content ul {
     padding-inline-start: 20px;
 }
 
@@ -123,8 +112,7 @@
     padding-inline-start: 10px;
 }
 
-.post-content dd ~ dd,
-.post-content dt ~ dt {
+.post-content dd~dd, .post-content dt~dt {
     margin-top: 10px;
 }
 
@@ -132,8 +120,7 @@
     margin-bottom: 32px;
 }
 
-.post-content table th,
-.post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
+.post-content table th, .post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
     min-width: 80px;
     padding: 12px 8px;
     line-height: 1.5;
@@ -153,14 +140,13 @@
     border-radius: var(--radius);
 }
 
-.post-content .highlight:not(table),
-.post-content pre {
+.post-content .highlight:not(table), .post-content pre {
     margin: 10px auto;
     background: var(--hljs-bg) !important;
     border-radius: var(--radius);
 }
 
-.post-content li > .highlight {
+.post-content li>.highlight {
     margin-inline-end: 0;
 }
 
@@ -184,8 +170,7 @@
     padding-inline-end: 0 !important;
 }
 
-.post-content .highlighttable td .highlight,
-.post-content .highlighttable td .linenodiv pre {
+.post-content .highlighttable td .highlight, .post-content .highlighttable td .linenodiv pre {
     margin-bottom: 0;
 }
 
@@ -248,14 +233,14 @@
     text-align: center;
 }
 
-.post-content figure > figcaption {
+.post-content figure>figcaption {
     color: var(--primary);
     font-size: 16px;
     font-weight: bold;
     margin: 8px 0 16px;
 }
 
-.post-content figure > figcaption > p {
+.post-content figure>figcaption>p {
     color: var(--secondary);
     font-size: 14px;
     font-weight: normal;
@@ -310,9 +295,7 @@
     margin-bottom: 5px;
 }
 
-.post-tags a,
-.share-buttons,
-.paginav {
+.post-tags a, .share-buttons, .paginav {
     border-radius: var(--radius);
     background: var(--code-bg);
     border: 1px solid var(--border);
@@ -328,8 +311,7 @@
     background: var(--code-bg);
 }
 
-.post-tags a:hover,
-.paginav a:hover {
+.post-tags a:hover, .paginav a:hover {
     background: var(--border);
 }
 
@@ -360,12 +342,7 @@
     transform: scale(0.96);
 }
 
-h1:hover .anchor,
-h2:hover .anchor,
-h3:hover .anchor,
-h4:hover .anchor,
-h5:hover .anchor,
-h6:hover .anchor {
+h1:hover .anchor, h2:hover .anchor, h3:hover .anchor, h4:hover .anchor, h5:hover .anchor, h6:hover .anchor {
     display: inline-flex;
     color: var(--secondary);
     margin-inline-start: 8px;
@@ -392,8 +369,7 @@ h6:hover .anchor {
     color: var(--secondary);
 }
 
-.paginav .prev,
-.paginav .next {
+.paginav .prev, .paginav .next {
     width: 50%;
 }
 

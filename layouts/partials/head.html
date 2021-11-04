@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-{{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
+{{- if or (and (hugo.IsProduction) (not .Params.noindex)) (and (eq .Site.Params.env "production") (not .Params.noindex)) }}
 <meta name="robots" content="index, follow">
 {{- else }}
 <meta name="robots" content="noindex, nofollow">
@@ -18,7 +18,7 @@
     {{- range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- else }}
     {{- range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- end -}}" />
 {{- end }}
-<meta name="description" content="{{- with .Description }}{{ . }}{{- else }}{{- if or .IsPage .IsSection}}
+<meta name="description" content="{{- with .Description }}{{ . }}{{- else }}{{- if .IsPage}}
     {{- .Summary | default (printf "%s - %s" .Title  .Site.Title) }}{{- else }}
     {{- with .Site.Params.description }}{{ . }}{{- end }}{{- end }}{{- end -}}">
 <meta name="author" content="{{ (partial "author.html" . ) }}">
@@ -64,10 +64,6 @@
 {{- end }}
 {{- end }}
 
-{{- with .Site.Params.label.icon }}
-<link rel="preload" href="{{ . }}" as="image">
-{{- end }}
-
 {{- /* Search */}}
 {{- if (eq .Layout `search`) -}}
 <link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
@@ -95,14 +91,28 @@
 {{- end }}
 {{- end }}
 
+{{- /* ScrollSpy ToC */}}
+{{- if and (.Param "ShowToc" ) (ge (len .TableOfContents) 240) }}
+{{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") ) }}
+{{- if not .Site.Params.assets.disableFingerprinting }}
+{{- $scroll := slice (resources.Get "js/scroll-toc.js") | resources.Concat "assets/js/scroll-toc.js" | minify | fingerprint }}
+<script defer crossorigin="anonymous" src="{{ $scroll.RelPermalink }}" integrity="{{ $scroll.Data.Integrity }}"></script>
+{{- else }}
+{{- $scroll := slice (resources.Get "js/scroll-toc.js") | resources.Concat "assets/js/scroll-toc.js" | minify }}
+<script defer crossorigin="anonymous" src="{{ $scroll.RelPermalink }}"></script>
+{{- end }}
+{{- end }}
+{{- end -}}
+
 {{- /* Favicons */}}
 <link rel="icon" href="{{ .Site.Params.assets.favicon | default "favicon.ico" | absURL }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL }}">
 <link rel="apple-touch-icon" href="{{ .Site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL }}">
 <link rel="mask-icon" href="{{ .Site.Params.assets.safari_pinned_tab | default "safari-pinned-tab.svg" | absURL }}">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgba(88, 89, 91, 1)">
+<meta name="theme-color" content="rgba(240, 202, 102, 1)">
+<meta name="msapplication-TileColor" content="rgba(240, 202, 102, 1)">
 
 {{- /* Generator */}}
 {{ hugo.Generator }}
@@ -113,48 +123,7 @@
 {{ end -}}
 {{- range .AllTranslations -}}
 <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}" />
-{{ end -}}
-
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    {{- if (and (ne .Site.Params.defaultTheme "light") (ne .Site.Params.defaultTheme "dark")) }}
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-    {{- end }}
-</noscript>
-
+{{ end }}
 {{- partial "extend_head.html" . -}}
 
 {{- /* Misc */}}
@@ -164,4 +133,11 @@
 {{- template "partials/templates/opengraph.html" . }}
 {{- template "partials/templates/twitter_cards.html" . }}
 {{- template "partials/templates/schema_json.html" . }}
+{{- end -}}
+
+
+{{- /* Plausible */}}
+{{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
+<script defer data-domain="blah.cloud" data-api="/backend/api/event" src="/backend/js/script.outbound-links.js"></script>
+<script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 {{- end -}}

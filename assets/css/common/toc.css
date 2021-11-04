@@ -1,0 +1,53 @@
+@media (min-width: 1024px) {
+    #tableOfContentContainer {
+        position: sticky;
+        align-self: start;
+        top: 76px;
+        display: block;
+        margin-left: 2rem;
+    }
+    .wrapper {
+        grid-template-columns: 100% 16em;
+        display: grid;
+        width: 41em;
+        margin: 0 0 0 -8em;
+    }
+    #TableOfContents li.active>a {
+        color: var(--primary);
+        font-weight: 500;
+    }
+    #TableOfContents li.active:before {
+        content: "→";
+        margin-left: -1em;
+        width: 1em;
+        color: var(--primary);
+        float: left;
+    }
+    #TableOfContents a {
+        text-decoration: none;
+        display: block;
+        color: var(--tertiary);
+        transition: all 100ms ease-in-out;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 15em;
+    }
+    #TableOfContents ul>li>ul a {
+        width: 14em;
+    }
+    #TableOfContents ul, ol {
+        list-style: none;
+    }
+    #TableOfContents ul>li>ul {
+        margin-left: 1em;
+    }
+    #TableOfContents a:hover, #TableOfContents a:focus {
+        color: var(--primary);
+    }
+}
+
+.container {
+    margin: auto;
+    max-width: 65rem;
+}

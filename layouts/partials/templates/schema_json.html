@@ -3,10 +3,10 @@
 {
   "@context": "https://schema.org",
   "@type": "{{- ( .Site.Params.schema.publisherType | default "Organization") | title -}}",
-  "name": {{ .Site.Title }},
+  "name": {{ .Site.Params.Author }},
   "url": {{ .Site.BaseURL }},
-  "description": {{ .Site.Params.description | plainify | truncate 180 | safeHTML }},
-  "thumbnailUrl": {{ .Site.Params.assets.favicon | default "favicon.ico" | absURL }},
+  "description": {{ .Site.Params.profileMode.subtitle | plainify | truncate 180 | safeHTML }},
+  "thumbnailUrl": {{ .Site.Params.profileMode.imageUrl | default "favicon.ico" | absURL }},
   "sameAs": [
     {{- if .Site.Params.schema.sameAs }}
       {{ range $i, $e := .Site.Params.schema.sameAs }}{{ if $i }}, {{ end }}{{ trim $e " " }}{{ end }}
@@ -14,6 +14,17 @@
       {{ range $i, $e := .Site.Params.SocialIcons }}{{ if $i }}, {{ end }}{{ trim $e.url " " }}{{ end }}
     {{- end}}
   ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "description": "{{ .Site.Params.description | plainify | truncate 180 | safeHTML  }}",
+    "thumbnailUrl": "{{ .Site.Params.assets.favicon | default "favicon.ico" | absURL  }}",
+    "license": "{{ .Site.Params.Copyright }}"
 }
 </script>
 {{- else if (or .IsPage .IsSection) }}
@@ -70,7 +81,6 @@
     {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}
     {{- end }}
   ],
-  "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }},
   "wordCount" : "{{ .WordCount }}",
   "inLanguage": {{ .Language.Lang | default "en-us" }},
   {{ if .Params.cover.image -}}
@@ -96,7 +106,8 @@
     {{- else -}}
   {
     "@type": "Person",
-    "name": {{ . }}
+    "name": {{ . }},
+    "url": "{{ $.Site.BaseURL }}{{ (printf "%s" "about") }}"
   },
     {{- end -}}
   {{- end }}
@@ -104,12 +115,15 @@
     "@type": "WebPage",
     "@id": {{ .Permalink | safeHTML }}
   },
+  "copyrightHolder" : "{{ .Site.Params.Author }}",
+  "copyrightYear" : "{{ .Date.Format "2006" }}",
+  "isFamilyFriendly": "true",
   "publisher": {
     "@type": "{{- ( .Site.Params.schema.publisherType | default "Organization") | title -}}",
-    "name": {{ .Site.Title }},
+    "name": {{ .Site.Params.Author }},
     "logo": {
       "@type": "ImageObject",
-      "url": {{ .Site.Params.assets.favicon | default "favicon.ico" | absURL }}
+      "url": {{ .Site.Params.profileMode.imageUrl | default "favicon.ico" | absURL }}
     }
   }
 }

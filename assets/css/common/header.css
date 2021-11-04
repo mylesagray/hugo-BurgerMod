@@ -1,3 +1,15 @@
+.header {
+    position: sticky;
+    width: 100%;
+    z-index: 10;
+    background-color: var(--theme);
+    top: 0;
+}
+
+#top {
+    background: var(--theme);
+}
+
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -12,14 +24,15 @@
     display: block;
 }
 
-.logo,
-#menu {
+.logo, #menu {
     display: flex;
     margin: auto var(--gap);
 }
 
 .logo {
     flex-wrap: inherit;
+    padding: 0.6em 0 0 1em;
+    margin: 0;
 }
 
 .logo a {
@@ -59,14 +72,22 @@ body:not(.dark) #sun {
     word-break: keep-all;
     overflow-x: auto;
     white-space: nowrap;
+    position: absolute;
+    width: 100%;
+    background: var(--highlight);
+    display: none;
+    margin-left: 0;
 }
 
-#menu li + li {
+#menu li+li {
     margin-inline-start: var(--gap);
 }
 
 #menu a {
     font-size: 16px;
+    display: block;
+    line-height: 50px;
+    text-align: center;
 }
 
 #menu .active {
@@ -74,9 +95,64 @@ body:not(.dark) #sun {
     border-bottom: 2px solid currentColor;
 }
 
-.lang-switch li,
-.lang-switch ul,
-.logo-switches {
+#menu a:hover, #menu a:focus, #menu a:hover svg, #menu a:focus svg {
+    color: var(--tertiary);
+    fill: var(--tertiary);
+}
+
+#menu a svg {
+    fill: var(--primary);
+    margin-bottom: 0;
+}
+
+#menu:hover {
+    display: block;
+}
+
+#menu li+li {
+    margin-left: 0;
+}
+
+.hamburger {
+    padding: 0 0.8em;
+    font-size: 2.2em;
+    line-height: 82px;
+    display: inline-block;
+    z-index: 2;
+}
+
+.hamburger svg {
+    fill: var(--primary);
+}
+
+.hamburger:hover~ul#menu {
+    display: block;
+}
+
+@media only screen and ( min-width: 768px) {
+    .hamburger {
+        display: none !important;
+    }
+    #menu {
+        position: static;
+        display: flex;
+        background: none;
+        clear: none;
+        flex: 1;
+        justify-content: flex-end;
+    }
+    #menu:hover {
+        display: flex;
+    }
+    #menu li {
+        padding: 0 1em;
+    }
+    #menu a svg {
+        margin-bottom: -4px;
+    }
+}
+
+.lang-switch li, .lang-switch ul, .logo-switches {
     display: inline-flex;
     margin: auto 4px;
 }

@@ -1,9 +1,21 @@
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    scroll-padding-top: 80px;
+}
+
+.hidden {
+    display: none;
+}
+
 .main {
     position: relative;
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
     max-width: calc(var(--main-width) + var(--gap) * 2);
     margin: auto;
-    padding: var(--gap);
+    padding: 0 var(--gap) var(--gap);
 }
 
 .page-header h1 {
@@ -44,8 +56,7 @@ code {
     direction: ltr;
 }
 
-div.highlight,
-pre {
+div.highlight, pre {
     position: relative;
 }
 
@@ -61,7 +72,19 @@ pre {
     font-size: 14px;
 }
 
-div.highlight:hover .copy-code,
-pre:hover .copy-code {
+div.highlight:hover .copy-code, pre:hover .copy-code {
     display: block;
+}
+
+.post-content pre code {
+    color: var(--content);
+}
+
+.dark .post-content code {
+    color: #f8f8f2;
+}
+
+.section h2 {
+    margin: 32px auto 24px;
+    font-size: 32px;
 }

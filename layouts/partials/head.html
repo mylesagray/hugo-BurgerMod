@@ -138,6 +138,12 @@
 
 {{- /* Plausible */}}
 {{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
-<script defer data-domain="blah.cloud" data-api="/backend/api/event" src="/backend/js/script.outbound-links.js"></script>
+{{- if .Site.Params.analytics.plausible.domain }}
+{{- if .Site.Params.analytics.plausible.proxy }}
+<script defer data-domain="{{ .Site.Params.analytics.plausible.domain }}" data-api="/backend/api/event" src="/backend/js/script.outbound-links.js"></script>
+{{- else }}
+<script defer data-domain="{{ .Site.Params.analytics.plausible.domain }}" src="https://plausible.io/js/plausible.js"></script>
+{{- end }}
 <script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+{{- end }}
 {{- end -}}

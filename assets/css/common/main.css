@@ -76,14 +76,6 @@ div.highlight:hover .copy-code, pre:hover .copy-code {
     display: block;
 }
 
-.post-content pre code {
-    color: var(--content);
-}
-
-.dark .post-content code {
-    color: #f8f8f2;
-}
-
 .section h2 {
     margin: 32px auto 24px;
     font-size: 32px;

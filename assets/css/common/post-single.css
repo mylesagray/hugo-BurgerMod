@@ -195,11 +195,15 @@
     display: block;
     margin: auto 0;
     padding: 10px;
-    color: rgb(213, 213, 214);
+    color: var(--content);
     background: 0 0;
     border-radius: 0;
     overflow-x: auto;
     word-break: break-all;
+}
+
+.dark .post-content code {
+    color: #f8f8f2;
 }
 
 .post-content blockquote {

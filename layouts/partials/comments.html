@@ -1,5 +1,11 @@
 {{- /* Comments area start */ -}}
-<script src="https://utteranc.es/client.js" repo="mylesagray/blog-comments" issue-term="title"
-    theme="preferred-color-scheme" crossorigin="anonymous" async>
+{{- /* utteranc.es */}}
+{{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
+{{- if .Site.Params.utterances.enabled }}
+<script src="https://utteranc.es/client.js" repo="{{ .Site.Params.utterances.repo }}"
+    issue-term="{{ .Site.Params.utterances.issue-term }}" theme="{{ .Site.Params.utterances.theme }}"
+    crossorigin="anonymous" async>
     </script>
+{{- end }}
+{{- end -}}
 {{- /* Comments area end */ -}}

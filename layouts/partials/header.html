@@ -194,6 +194,8 @@
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
                         height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                 </picture>
+                {{- else }}
+                {{- $label_text -}}
                 {{- end -}}
             </a>
             {{- end }}

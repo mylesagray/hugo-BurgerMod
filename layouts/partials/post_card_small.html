@@ -13,14 +13,14 @@
                     
                         {{ if ($isJPG) -}}
                         {{ $avifPath:= replace .Params.cover.image ".jpg" ".avif" }}
-                        {{ $avifPathStatic:= (add (add "/content/" .Page.Dir) $avifPath) }}
+                        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath) }}
                     
                         {{ if (fileExists $avifPathStatic) -}}
                         <source srcset="{{ .RelPermalink }}{{$avifPath | safeURL }}" type="image/avif">
                         {{- end }}
                     
                         {{ $webpPath:= replace .Params.cover.image ".jpg" ".webp" }}
-                        {{ $webpPathStatic:= (add (add "/content/" .Page.Dir) $webpPath )}}
+                        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir) $webpPath )}}
                     
                         {{ if (fileExists $webpPathStatic) -}}
                         <source srcset="{{ .RelPermalink }}{{$webpPath | safeURL }}" type="image/webp">
@@ -29,14 +29,14 @@
                     
                         {{ if ($isPNG) -}}
                         {{ $avifPath:= replace .Params.cover.image ".png" ".avif" }}
-                        {{ $avifPathStatic:= (add (add "/content/" .Page.Dir) $avifPath )}}
+                        {{ $avifPathStatic:= (add (add "/content/" .Page.File.Dir) $avifPath )}}
                     
                         {{ if (fileExists $avifPathStatic) -}}
                         <source srcset="{{ .RelPermalink }}{{$avifPath | safeURL }}" type="image/avif">
                         {{- end }}
                     
                         {{ $webpPath:= replace .Params.cover.image ".png" ".webp" }}
-                        {{ $webpPathStatic:= (add (add "/content/" .Page.Dir) $webpPath )}}
+                        {{ $webpPathStatic:= (add (add "/content/" .Page.File.Dir) $webpPath )}}
                     
                         {{ if (fileExists $webpPathStatic) -}}
                         <source srcset="{{ .RelPermalink }}{{$webpPath | safeURL }}" type="image/webp">

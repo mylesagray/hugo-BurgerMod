@@ -49,6 +49,12 @@
     margin-inline-end: 8px;
 }
 
+.logo a img.logo {
+    width: 65px;
+    height: 65px;
+    padding: 0;
+}
+
 #theme-toggle svg {
     height: 18px;
 }
@@ -149,6 +155,11 @@ body:not(.dark) #sun {
     }
     #menu a svg {
         margin-bottom: -4px;
+    }
+    .logo a img.logo {
+        width: 245px;
+        height: 34px;
+        padding: 0;
     }
 }
 

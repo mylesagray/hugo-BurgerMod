@@ -104,7 +104,7 @@
                     <source media="(min-width: 768px)" srcset="{{ $avifPath | safeURL }}" type="image/avif"
                         alt="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
-                        height="{{- .Site.Params.label.iconHeight | default " 30px" -}}">
+                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
                 
                     {{ $webpPath:= replace .Site.Params.label.icon ".jpg" ".webp" }}
@@ -114,8 +114,12 @@
                     <source media="(min-width: 768px)" srcset="{{ $webpPath | safeURL }}" type="image/webp"
                         alt="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
-                        height="{{- .Site.Params.label.iconHeight | default " 30px" -}}">
+                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
+
+                    <source media="(min-width: 768px)" srcset="{{- .Site.Params.label.icon | safeURL -}}" type="image/jpeg" alt="logo"
+                        width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
+                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
                 
                     {{ if ($isPNG) -}}
@@ -126,7 +130,7 @@
                     <source media="(min-width: 768px)" srcset="{{ $avifPath | safeURL }}" type="image/avif"
                         alt="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
-                        height="{{- .Site.Params.label.iconHeight | default " 30px" -}}">
+                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
                 
                     {{ $webpPath:= replace .Site.Params.label.icon ".png" ".webp" }}
@@ -136,8 +140,12 @@
                     <source media="(min-width: 768px)" srcset="{{ $webpPath | safeURL }}" type="image/webp"
                         alt="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
-                        height="{{- .Site.Params.label.iconHeight | default " 30px" -}}">
+                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
+
+                    <source media="(min-width: 768px)" srcset="{{- .Site.Params.label.icon | safeURL -}}" type="image/png" alt="logo"
+                        width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
+                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
 
                     {{- if .Site.Params.label.smallIcon }}
@@ -151,8 +159,8 @@
                     {{ if (fileExists $avifPathStatic) -}}
                     <source srcset="{{ $avifPath | safeURL }}" type="image/avif"
                         alt="logo"
-                        width="{{- .Site.Params.label.smallIconWidth | default " 70px" -}}"
-                        height="{{- .Site.Params.label.smallIconHeight | default " 70px" -}}">
+                        width="{{- .Site.Params.label.smallIconWidth | default " 65px" -}}"
+                        height="{{- .Site.Params.label.smallIconHeight | default " 65px" -}}">
                     {{- end }}
                     
                     {{ $webpPath:= replace .Site.Params.label.smallIcon ".jpg" ".webp" }}
@@ -161,8 +169,8 @@
                     {{ if (fileExists $webpPathStatic) -}}
                     <source srcset="{{ $webpPath | safeURL }}" type="image/webp"
                         alt="logo"
-                        width="{{- .Site.Params.label.smallIconWidth | default " 70px" -}}"
-                        height="{{- .Site.Params.label.smallIconHeight | default " 70px" -}}">
+                        width="{{- .Site.Params.label.smallIconWidth | default " 65px" -}}"
+                        height="{{- .Site.Params.label.smallIconHeight | default " 65px" -}}">
                     {{- end }}
                     {{- end }}
 
@@ -173,8 +181,8 @@
                     {{ if (fileExists $avifPathStatic) -}}
                     <source srcset="{{ $avifPath | safeURL }}" type="image/avif"
                         alt="logo"
-                        width="{{- .Site.Params.label.smallIconWidth | default " 70px" -}}"
-                        height="{{- .Site.Params.label.smallIconHeight | default " 70px" -}}">
+                        width="{{- .Site.Params.label.smallIconWidth | default " 65px" -}}"
+                        height="{{- .Site.Params.label.smallIconHeight | default " 65px" -}}">
                     {{- end }}
                     
                     {{ $webpPath:= replace .Site.Params.label.smallIcon ".png" ".webp" }}
@@ -183,14 +191,14 @@
                     {{ if (fileExists $webpPathStatic) -}}
                     <source srcset="{{ $webpPath | safeURL }}" type="image/webp"
                         alt="logo"
-                        width="{{- .Site.Params.label.smallIconWidth | default " 70px" -}}"
-                        height="{{- .Site.Params.label.smallIconHeight | default " 70px" -}}">
+                        width="{{- .Site.Params.label.smallIconWidth | default " 65px" -}}"
+                        height="{{- .Site.Params.label.smallIconHeight | default " 65px" -}}">
                     {{- end }}
                     {{- end }}
                     {{- end }}
                 
                     {{ $img := imageConfig (add "/static" (.Site.Params.label.icon | safeURL)) }}
-                    <img src="{{- .Site.Params.label.icon | safeURL -}}" alt="logo" aria-label="logo"
+                    <img class="logo" src="{{- .Site.Params.label.icon | safeURL -}}" alt="logo" aria-label="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
                         height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                 </picture>

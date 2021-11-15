@@ -30,7 +30,7 @@
     font-size: 16px;
 }
 
-.post-content {
+.post-content, .post-description {
     color: var(--content);
 }
 

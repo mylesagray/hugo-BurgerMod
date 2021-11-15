@@ -110,9 +110,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL }}">
 <link rel="apple-touch-icon" href="{{ .Site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL }}">
 <link rel="mask-icon" href="{{ .Site.Params.assets.safari_pinned_tab | default "safari-pinned-tab.svg" | absURL }}">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgba(88, 89, 91, 1)">
-<meta name="theme-color" content="rgba(240, 202, 102, 1)">
-<meta name="msapplication-TileColor" content="rgba(240, 202, 102, 1)">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="{{ .Site.Params.assets.theme_color.dark | default "rgba(88, 89, 91, 1)" }}">
+<meta name="theme-color" content="{{ .Site.Params.assets.theme_color.light | default "rgba(240, 202, 102, 1)" }}">
+<meta name="msapplication-TileColor" content="{{ .Site.Params.assets.msapplication_TileColor | default "rgba(240, 202, 102, 1)" }}">
 
 {{- /* Generator */}}
 {{ hugo.Generator }}

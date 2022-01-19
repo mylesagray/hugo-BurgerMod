@@ -17,7 +17,7 @@
 }
 
 .related-links-columns {
-    overflow: overlay;
+    overflow: auto;
 }
 
 .post-footer {

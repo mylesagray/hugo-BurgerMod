@@ -60,7 +60,6 @@
         .top-link {
             display: none;
         }
-
     </style>
     {{- if (and (ne .Site.Params.defaultTheme "light") (ne .Site.Params.defaultTheme "dark")) }}
     <style>
@@ -82,7 +81,6 @@
                 background: var(--theme);
             }
         }
-
     </style>
     {{- end }}
 </noscript>
@@ -100,52 +98,48 @@
                     {{ if ($isJPG) -}}
                     {{ $avifPath:= replace .Site.Params.label.icon ".jpg" ".avif" }}
                     {{ $avifPathStatic:= printf "/static/%s" $avifPath }}
-                
+
                     {{ if (fileExists $avifPathStatic) -}}
-                    <source media="(min-width: 768px)" srcset="{{ $avifPath | safeURL }}" type="image/avif"
-                        alt="logo"
-                        width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
-                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
-                    {{- end }}
-                
-                    {{ $webpPath:= replace .Site.Params.label.icon ".jpg" ".webp" }}
-                    {{ $webpPathStatic:= printf "/static/%s" $webpPath }}
-                
-                    {{ if (fileExists $webpPathStatic) -}}
-                    <source media="(min-width: 768px)" srcset="{{ $webpPath | safeURL }}" type="image/webp"
-                        alt="logo"
+                    <source media="(min-width: 768px)" srcset="{{ $avifPath | safeURL }}" type="image/avif" alt="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
                         height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
 
-                    <source media="(min-width: 768px)" srcset="{{- .Site.Params.label.icon | safeURL -}}" type="image/jpeg" alt="logo"
+                    {{ $webpPath:= replace .Site.Params.label.icon ".jpg" ".webp" }}
+                    {{ $webpPathStatic:= printf "/static/%s" $webpPath }}
+
+                    {{ if (fileExists $webpPathStatic) -}}
+                    <source media="(min-width: 768px)" srcset="{{ $webpPath | safeURL }}" type="image/webp" alt="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
                         height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
-                
+
+                    <source media="(min-width: 768px)" srcset="{{- .Site.Params.label.icon | safeURL -}}"
+                        type="image/jpeg" alt="logo" width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
+                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
+                    {{- end }}
+
                     {{ if ($isPNG) -}}
                     {{ $avifPath:= replace .Site.Params.label.icon ".png" ".avif" }}
                     {{ $avifPathStatic:= printf "/static/%s" $avifPath }}
-                
+
                     {{ if (fileExists $avifPathStatic) -}}
-                    <source media="(min-width: 768px)" srcset="{{ $avifPath | safeURL }}" type="image/avif"
-                        alt="logo"
-                        width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
-                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
-                    {{- end }}
-                
-                    {{ $webpPath:= replace .Site.Params.label.icon ".png" ".webp" }}
-                    {{ $webpPathStatic:= printf "/static/%s" $webpPath }}
-                
-                    {{ if (fileExists $webpPathStatic) -}}
-                    <source media="(min-width: 768px)" srcset="{{ $webpPath | safeURL }}" type="image/webp"
-                        alt="logo"
+                    <source media="(min-width: 768px)" srcset="{{ $avifPath | safeURL }}" type="image/avif" alt="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
                         height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
 
-                    <source media="(min-width: 768px)" srcset="{{- .Site.Params.label.icon | safeURL -}}" type="image/png" alt="logo"
+                    {{ $webpPath:= replace .Site.Params.label.icon ".png" ".webp" }}
+                    {{ $webpPathStatic:= printf "/static/%s" $webpPath }}
+
+                    {{ if (fileExists $webpPathStatic) -}}
+                    <source media="(min-width: 768px)" srcset="{{ $webpPath | safeURL }}" type="image/webp" alt="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
+                        height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
+                    {{- end }}
+
+                    <source media="(min-width: 768px)" srcset="{{- .Site.Params.label.icon | safeURL -}}"
+                        type="image/png" alt="logo" width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
                         height="{{- .Site.Params.label.iconHeight | default " 34px" -}}">
                     {{- end }}
 
@@ -156,20 +150,18 @@
                     {{ if ($isSmallJPG) -}}
                     {{ $avifPath:= replace .Site.Params.label.smallIcon ".jpg" ".avif" }}
                     {{ $avifPathStatic:= printf "/static/%s" $avifPath }}
-                    
+
                     {{ if (fileExists $avifPathStatic) -}}
-                    <source srcset="{{ $avifPath | safeURL }}" type="image/avif"
-                        alt="logo"
+                    <source srcset="{{ $avifPath | safeURL }}" type="image/avif" alt="logo"
                         width="{{- .Site.Params.label.smallIconWidth | default " 65px" -}}"
                         height="{{- .Site.Params.label.smallIconHeight | default " 65px" -}}">
                     {{- end }}
-                    
+
                     {{ $webpPath:= replace .Site.Params.label.smallIcon ".jpg" ".webp" }}
                     {{ $webpPathStatic:= printf "/static/%s" $webpPath }}
-                    
+
                     {{ if (fileExists $webpPathStatic) -}}
-                    <source srcset="{{ $webpPath | safeURL }}" type="image/webp"
-                        alt="logo"
+                    <source srcset="{{ $webpPath | safeURL }}" type="image/webp" alt="logo"
                         width="{{- .Site.Params.label.smallIconWidth | default " 65px" -}}"
                         height="{{- .Site.Params.label.smallIconHeight | default " 65px" -}}">
                     {{- end }}
@@ -178,26 +170,24 @@
                     {{ if ($isSmallPNG) -}}
                     {{ $avifPath:= replace .Site.Params.label.smallIcon ".png" ".avif" }}
                     {{ $avifPathStatic:= printf "/static/%s" $avifPath }}
-                    
+
                     {{ if (fileExists $avifPathStatic) -}}
-                    <source srcset="{{ $avifPath | safeURL }}" type="image/avif"
-                        alt="logo"
+                    <source srcset="{{ $avifPath | safeURL }}" type="image/avif" alt="logo"
                         width="{{- .Site.Params.label.smallIconWidth | default " 65px" -}}"
                         height="{{- .Site.Params.label.smallIconHeight | default " 65px" -}}">
                     {{- end }}
-                    
+
                     {{ $webpPath:= replace .Site.Params.label.smallIcon ".png" ".webp" }}
                     {{ $webpPathStatic:= printf "/static/%s" $webpPath }}
-                    
+
                     {{ if (fileExists $webpPathStatic) -}}
-                    <source srcset="{{ $webpPath | safeURL }}" type="image/webp"
-                        alt="logo"
+                    <source srcset="{{ $webpPath | safeURL }}" type="image/webp" alt="logo"
                         width="{{- .Site.Params.label.smallIconWidth | default " 65px" -}}"
                         height="{{- .Site.Params.label.smallIconHeight | default " 65px" -}}">
                     {{- end }}
                     {{- end }}
                     {{- end }}
-                
+
                     {{ $img := imageConfig (add "/static" (.Site.Params.label.icon | safeURL)) }}
                     <img class="logo" src="{{- .Site.Params.label.icon | safeURL -}}" alt="logo" aria-label="logo"
                         width="{{- .Site.Params.label.iconWidth | default " 245px" -}}"
@@ -230,12 +220,12 @@
                 </svg>
             </button>
             {{- end }}
-        
+
             {{- $lang := .Lang}}
             {{- $separator := or $label_text (not .Site.Params.disableThemeToggle)}}
             {{- with $.Site.Home.AllTranslations }}
             <ul class="lang-switch">
-                {{- if $separator }}<li>|</li>{{ end }}
+                {{- if $separator }}<li> </li>{{ end }}
                 {{- range . -}}
                 {{- if ne $lang .Lang }}
                 <li>
@@ -270,8 +260,9 @@
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
             {{- $is_search := eq ($.Site.GetPage .KeyName).Layout `search` }}
             <li>
-                <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
-                {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
+                <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)"
+                    | safeHTMLAttr) ("" | safeHTMLAttr ) }}" {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" |
+                    safeHTMLAttr ) }}>
                     <span {{- if eq $menu_item_url $page_url }} class="active" {{- end }}>
                         {{- .Pre }}
                         {{- .Name -}}
